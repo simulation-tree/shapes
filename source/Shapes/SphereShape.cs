@@ -1,5 +1,4 @@
 ﻿using System;
-using Unmanaged;
 
 namespace Shapes.Types
 {
@@ -18,23 +17,23 @@ namespace Shapes.Types
 
         public readonly override string ToString()
         {
-            USpan<char> buffer = stackalloc char[32];
-            uint length = ToString(buffer);
-            return buffer.GetSpan(length).ToString();
+            Span<char> buffer = stackalloc char[32];
+            int length = ToString(buffer);
+            return buffer.Slice(0, length).ToString();
         }
 
-        public readonly uint ToString(USpan<char> buffer)
+        public readonly int ToString(Span<char> destination)
         {
-            uint length = 0;
-            buffer[length++] = 'S';
-            buffer[length++] = 'p';
-            buffer[length++] = 'h';
-            buffer[length++] = 'e';
-            buffer[length++] = 'r';
-            buffer[length++] = 'e';
-            buffer[length++] = '(';
-            length += radius.ToString(buffer.Slice(length));
-            buffer[length++] = ')';
+            int length = 0;
+            destination[length++] = 'S';
+            destination[length++] = 'p';
+            destination[length++] = 'h';
+            destination[length++] = 'e';
+            destination[length++] = 'r';
+            destination[length++] = 'e';
+            destination[length++] = '(';
+            length += radius.ToString(destination.Slice(length));
+            destination[length++] = ')';
             return length;
         }
 

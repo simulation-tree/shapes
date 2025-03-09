@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Numerics;
-using Unmanaged;
 
 namespace Shapes.Types
 {
@@ -38,21 +37,21 @@ namespace Shapes.Types
 
         public readonly override string ToString()
         {
-            USpan<char> buffer = stackalloc char[32];
-            uint length = ToString(buffer);
-            return buffer.GetSpan(length).ToString();
+            Span<char> buffer = stackalloc char[32];
+            int length = ToString(buffer);
+            return buffer.Slice(0, length).ToString();
         }
 
-        public readonly uint ToString(USpan<char> buffer)
+        public readonly int ToString(Span<char> destination)
         {
-            uint length = 0;
-            buffer[length++] = 'C';
-            buffer[length++] = 'u';
-            buffer[length++] = 'b';
-            buffer[length++] = 'e';
-            buffer[length++] = '(';
-            length += extents.ToString(buffer.Slice(length));
-            buffer[length++] = ')';
+            int length = 0;
+            destination[length++] = 'C';
+            destination[length++] = 'u';
+            destination[length++] = 'b';
+            destination[length++] = 'e';
+            destination[length++] = '(';
+            length += extents.ToString(destination.Slice(length));
+            destination[length++] = ')';
             return length;
         }
 
