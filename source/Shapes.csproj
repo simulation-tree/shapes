@@ -27,9 +27,9 @@
 
   <ItemGroup>
     <Content Include="bin/Debug/net9.0/Shapes.dll" Pack="true" PackagePath="tools/debug/Shapes.dll" Visible="false"/>
-    <Content Include="bin/Debug/net9.0/Shapes.xml" Pack="true" PackagePath="tools/debug/Shapes.xml" Visible="false"/>
+    <Content Include="bin/Debug/net9.0/Shapes.xml" Pack="true" PackagePath="tools/debug/Shapes.xml" Visible="false" Condition="Exists('bin/Debug/net9.0/Shapes.xml')"/>
     <Content Include="bin/Release/net9.0/Shapes.dll" Pack="true" PackagePath="tools/release/Shapes.dll" Visible="false"/>
-    <Content Include="bin/Release/net9.0/Shapes.xml" Pack="true" PackagePath="tools/release/Shapes.xml" Visible="false"/>
+    <Content Include="bin/Release/net9.0/Shapes.xml" Pack="true" PackagePath="tools/release/Shapes.xml" Visible="false" Condition="Exists('bin/Release/net9.0/Shapes.xml')"/>
     <Content Include="build/Shapes.targets" Pack="true" PackagePath="build/Shapes.targets" Visible="false"/>
   </ItemGroup>
 
