@@ -67,7 +67,7 @@ namespace Shapes.Types
 
         public readonly override int GetHashCode()
         {
-            return HashCode.Combine(extents);
+            return extents.GetHashCode();
         }
 
         public static implicit operator Shape(CubeShape shape)

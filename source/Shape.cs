@@ -97,22 +97,19 @@ namespace Shapes
 
         public readonly override int GetHashCode()
         {
-            unchecked
+            int hash = 17;
+            fixed (float* data = this.data)
             {
-                int hash = 17;
-                fixed (float* data = this.data)
-                {
-                    hash = hash * 31 + *(int*)data;
-                    hash = hash * 31 + data[2].GetHashCode();
-                    hash = hash * 31 + data[3].GetHashCode();
-                    hash = hash * 31 + data[4].GetHashCode();
-                    hash = hash * 31 + data[5].GetHashCode();
-                    hash = hash * 31 + data[6].GetHashCode();
-                    hash = hash * 31 + data[7].GetHashCode();
-                }
-
-                return hash;
+                hash = hash * 31 + *(int*)data;
+                hash = hash * 31 + data[2].GetHashCode();
+                hash = hash * 31 + data[3].GetHashCode();
+                hash = hash * 31 + data[4].GetHashCode();
+                hash = hash * 31 + data[5].GetHashCode();
+                hash = hash * 31 + data[6].GetHashCode();
+                hash = hash * 31 + data[7].GetHashCode();
             }
+
+            return hash;
         }
 
         public static Shape Create<T>(T shape) where T : unmanaged, IShape

@@ -49,7 +49,7 @@ namespace Shapes.Types
 
         public readonly override int GetHashCode()
         {
-            return HashCode.Combine(radius);
+            return radius.GetHashCode();
         }
 
         public static implicit operator Shape(SphereShape shape)
